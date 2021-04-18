@@ -1,0 +1,65 @@
+Capítulo 01 -  Instalando e configurando o MYSQL
+Nessa capítulo nós aprendemos:
+⦁	Um pouco sobre a história do SQL;
+⦁	Um pouco da historia e características do banco MySql;
+⦁	Instalamos o MySql, Workbench (e por minha conta o MySql Notifier)
+
+Capítulo 02 -  Manipulando o banco de dados
+Nessa capítulo nós aprendemos:
+⦁	As tabelas são criadas dentro do Banco de Dados;
+⦁	Em uma tabela temos: campos (colunas), registros (linhas) chaves primárias, chaves estrangeirase índices (ajuda encontrar o registro mais rápido);
+⦁	Podemos agrupar as tabelas em Schema;
+⦁	Em banco temos os Procedures, que é da ao banco da dados uma capacidade similar a linguagem de programação (condicional, loops). Dentro destes nós temos as funções (cálculos). Essas não seguem o padrão ANSI.
+⦁	O agrupamento de consultas = View;
+⦁	Trigger = É um gatilho que é acionado quando uma determinada ação acontece. O disparo desse gatilho pode ser a execução de uma procedure ou função
+⦁	Juntar tabela devemos utilizar Join;
+⦁	Conhecemos a IDE Workbench, ela fará o papel de cliente. Com ela manipulamos a nossa base de dados;
+⦁	Aprendemos o comando para criar banco de dados. O comando é CREATE DATABASE nomeDoBanco;
+⦁	Aprendemos a deletar o banco de dados. O comando é DROP DATABASE nomeDoBanco;
+⦁	É possivel usar o MySql pelo terminal, para isso basta acessar a basta do Mysql Server -> bin -> e executar o comando: mysql -u root -p
+	Obs: root = usuário e -p exigirá a digitação da senha do usuário.
+⦁	Outra maneira de acessar via terminal é adicionar a pasta do Mysql Server na variável Path do sistema, assim o comando no terminal funcionará em qualquer diretório;
+
+Capítulo 03 -  Gerenciando as tabelas do banco de dados
+Nessa capítulo nós aprendemos:
+⦁	Tipos de dados disponíveis para se criar um campo;
+⦁	Criar uma table com comando e via interface gráfica. Comando: 
+	CREATE TABLE ALUNO(
+	NOME VARCHAR(255),
+	MATRICULA VARCHAR(7),
+	ENDERECO VARCHAR(150)
+	);
+⦁	A deletar uma table com a interface gráfica (Botao direito na table -> DROP TABLE) ou pelo comando: DROP TABLE NomeDaTabela;
+
+Capítulo 04 -  Manutenção dos dados nas tabelas
+Nessa capítulo nós aprendemos:
+⦁	Desabilitar no Workbench a obrigação de sempre usar Chave Primária no filtro para Alterar e/ou Deletar dados da tabela. (Edit -> Preferences -> Sql Editor -> Desabilitar o Safe Mode.)
+⦁	A inserir dados na tabela, para isso usamos o comando INSERT INTO NomeDaTabela (NomeDaColuna, NomeDaColuna, ...) VALUES ('ValorDaColuna', ValorDaColunaSemAspasSeForNumero, ...); obs: podemos inserir vários dados de uma só vez, basta escrever o comando N vezes necessárias;
+⦁	A Alterar os dados já inseridos na tabela com o comando UPDATE NomeDaTabela SET NomeDaColuna = 'ValorAtualizado', NomeDaColuna = 'ValorAtualizado' WHERE NomeDaColunaFiltro = 'ValorDoFiltro';
+⦁	A apagar um registro da tabela com o comando DELTE FROM NomeDaTabela WHERE NomeDaColunaFiltro = 'ValorDoFiltro';     obs: Se não colocarmos o filtro, a tabela toda será apagada!
+⦁	Adicionar um campo como CHAVE PRIMÁRIA com o comando ALTER TABLE NomeDaTabela ADD PRIMARY KEY (NomeDaColuna);
+⦁	Aprendemos que para inserir data devemos colocar assim: 'ANO-MES-DIA' = '2000-12-20';
+⦁	Aprendemos que em campo do tipo BIT só aceita 0 (Falso) e 1 (Verdadeiro);
+⦁	Aprendemos a adiconar uma Coluna em uma tabela já construída. Usamos para isso o comando ALTER TABLE NomeDaTabela ADD COLUMN (NomeDaColunaNova TipoDaColunaNova);
+
+Capítulo 05 -  Consultando os dados
+Nessa capítulo nós aprendemos:
+⦁	Podemos selecionar e listar os registros de uma tablea usando o comando SELECT. Para selecionar todas as colunas não precisamos escrever o nome de todas as Colunas, basta fazer SELECT * FROM NomeDaTabela;
+⦁	Podemos selecionar e listar apenas alguns campos de uma tabela, com o comando: SELECT NomeDaColuna, NomeDacoluna FROM NomeDaTabela;
+⦁	Podemos dar apelidos 'Alias' as Colunas da tabela com o comando SELECT nome AS nome_apelido FROM NomeDaTabela;
+⦁	Podemos limitar a quantidade de saída de uma listagem com o comando LIMIT ValorDoLimit, ficando assim: SELECT * FROM NomeDaTabela LIMIT 5 (Mostrará os primeiros 5 registros);
+⦁	Apredemos que o WHERE não precisa ser com campo de Chave Primária, ele aceita qualquer campo!
+⦁	Aprendemos que podemos usar o SELECT com o WHERE, exemplo: SELECT * FROM aluno WHERE aprovado = 1;
+⦁	Aprendemos que WHERE nao precisa ser usado somente com o simbolo '=', ele pode vir acompanhado de >, >=, <>, entre outros. Ou seja com WHERE a gente pode implentar lógica de comparação.
+⦁	Aprendemos que é impossivel achar valores iguais com campos do tipo Float, ou seja, que são ponto flutuantes, pois eles passam por arredondamento. Exemplo SELECT * FROM CLIENTE WHERE PontoFlutuanteFloat = 10.001. Para resolver isso devemos usar WHERE com BETWEEN;
+⦁	Podemos usar o WHERE + COMPARACAO com os campos DATE, exemplo: SELECT * FROM alunos WHERE DATA_MATRICULA > '2000-12-01';
+⦁	Podemos usar funções com o comando WHERE + COMPARAÇÃO. Exemplo:SELECT * FROM alunos WHERE YEAR(DATA_MATRICULA) = 2000;
+⦁	As expressões de filtro realizadas com WHERE podem ser COMPOSTAS, ou seja, fazer comparação com mais de um CAMPO. Exemplo: SELECT * FROM alunos WHERE data_matricula > '2000-12-01' AND situacao = 'aprovado';
+⦁	Filtro composto podem ser usado em SELECT, DELETE, UPDATE...
+⦁	Filtro composto pode ser com AND e/ou OR. Devemos separar com () cada conjunto de filtro para facilitar o entendimento.
+
+Iniando o curso:  Introdução ao SQL com MySQL - Manipule e consulte dados
+
+Link do curso: https://cursos.alura.com.br/course/mysql-manipule-dados-com-sql
+
+Repositório: https://github.com/RodrigoFrancoZup/IntroducaoMySql
